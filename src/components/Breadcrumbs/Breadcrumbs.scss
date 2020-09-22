@@ -26,6 +26,20 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
   &.newDesignLanguage {
     margin-left: 0;
+    &:hover {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity
+      .ContentWrapper {
+        background-color: var(--p-action-secondary-pressed);
+      }
+    }
+
+    &:active {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity
+      .ContentWrapper {
+        background-color: var(--p-action-secondary-depressed);
+        @include recolor-icon(var(--p-icon-on-interactive));
+      }
+    }
   }
 
   &:hover,
@@ -66,10 +80,17 @@ $difference-between-touch-area-and-backdrop: control-height() -
   padding: $vertical-padding $horizontal-padding;
   background: transparent;
   height: control-slim-height();
-  border-radius: var(--p-border-radius-base, border-radius());
+  border-radius: var(--p-border-radius-full, border-radius());
   will-change: background;
   transition: background duration() easing();
   @include focus-ring;
+
+  .newDesignLanguage & {
+    width: control-slim-height();
+    justify-content: center;
+    margin-left: -1 * spacing(tight);
+    padding: 0;
+  }
 }
 
 .Content {
@@ -83,4 +104,8 @@ $difference-between-touch-area-and-backdrop: control-height() -
   height: $icon-size;
   margin: (-0.5 * $icon-size) 0 (-0.5 * $icon-size) rem(-8px);
   margin: 0 0 0 rem(-8px);
+
+  .newDesignLanguage & {
+    margin: 0;
+  }
 }

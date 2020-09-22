@@ -8,4 +8,12 @@
   > * {
     flex: 0 0 auto;
   }
+
+  &.newDesignLanguage {
+    justify-content: flex-end;
+    // stylelint-disable-next-line selector-max-combinators
+    > * :not(:last-child) {
+      margin-right: spacing(extra-tight);
+    }
+  }
 }

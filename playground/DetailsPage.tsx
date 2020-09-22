@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState, SVGProps} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import {
   CirclePlusMinor,
   DuplicateMinor,
@@ -464,19 +464,19 @@ export function DetailsPage() {
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
-      // additionalMetaData="May 8, 2020 at 7:31 am from Developer Tools (via import)"
+      additionalMetaData="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
       secondaryActions={[
         {
-          content: 'Print',
-          icon: PrintMinor,
+          content: 'Duplicate',
+          icon: DuplicateMinor,
         },
         {
           content: 'View',
           icon: ViewMinor,
         },
         {
-          content: 'Duplicate',
-          icon: DuplicateMinor,
+          content: 'Print',
+          icon: PrintMinor,
         },
       ]}
       actionGroups={[
