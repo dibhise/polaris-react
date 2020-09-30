@@ -116,12 +116,14 @@ export function Header({
     ) : null;
 
   const pageTitleMarkup = (
-    <Title
-      title={title}
-      subtitle={subtitle}
-      titleMetadata={titleMetadata}
-      thumbnail={thumbnail}
-    />
+    <div className={styles.TitleWrapper}>
+      <Title
+        title={title}
+        subtitle={subtitle}
+        titleMetadata={titleMetadata}
+        thumbnail={thumbnail}
+      />
+    </div>
   );
 
   const primaryActionMarkup = primaryAction ? (
@@ -137,7 +139,10 @@ export function Header({
         )}
       >
         <ActionMenu
-          actions={secondaryActions}
+          actions={[
+            ...secondaryActions,
+            (newDesignLanguage && primaryAction) || {},
+          ]}
           groups={actionGroups}
           rollup={isNavigationCollapsed}
         />
@@ -253,16 +258,7 @@ function PrimaryActionMarkup({
     );
   }
 
-  return (
-    <ConditionalWrapper
-      condition={newDesignLanguage === false}
-      wrapper={(children) => (
-        <div className={styles.PrimaryActionWrapper}>{children}</div>
-      )}
-    >
-      {content}
-    </ConditionalWrapper>
-  );
+  return <div className={styles.PrimaryActionWrapper}>{content}</div>;
 }
 
 function shouldShowIconOnly(

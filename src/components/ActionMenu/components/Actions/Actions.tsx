@@ -155,7 +155,7 @@ export function Actions({actions = [], groups = []}: Props) {
   return (
     <div className={className} ref={actionsLayoutRef}>
       {newDesignLanguage ? (
-        <ButtonGroup segmented>
+        <ButtonGroup spacing="extraTight">
           {showableActions && showableActions.length > 0
             ? showableActions.map((action) => (
                 <SecondaryAction

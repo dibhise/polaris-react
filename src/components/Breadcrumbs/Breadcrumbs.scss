@@ -25,18 +25,20 @@ $difference-between-touch-area-and-backdrop: control-height() -
   text-decoration: none;
 
   &.newDesignLanguage {
-    margin-left: 0;
+    @include focus-ring($border-width: rem(1px));
+    margin: 0;
+    border-radius: var(--p-border-radius-base);
+    box-shadow: 0 0 0 border-width() var(--p-border);
+    padding: spacing(extra-tight);
+
     &:hover {
-      // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      .ContentWrapper {
-        background-color: var(--p-action-secondary-pressed);
-      }
+      background-color: var(--p-action-secondary-pressed);
     }
 
     &:active {
+      background-color: var(--p-action-secondary-depressed);
       // stylelint-disable-next-line selector-max-class, selector-max-specificity
-      .ContentWrapper {
-        background-color: var(--p-action-secondary-depressed);
+      .Icon {
         @include recolor-icon(var(--p-icon-on-interactive));
       }
     }
@@ -61,14 +63,12 @@ $difference-between-touch-area-and-backdrop: control-height() -
 
   &:active {
     .ContentWrapper {
-      background: var(--p-surface-subdued, plain-button-background());
+      background: var(--p-override-transparent, plain-button-background());
     }
   }
 
   &:focus:not(:active) {
-    .ContentWrapper {
-      @include focus-ring($style: 'focused');
-    }
+    @include focus-ring($style: 'focused');
   }
   // stylelint-enable selector-max-specificity
 }
@@ -80,15 +80,14 @@ $difference-between-touch-area-and-backdrop: control-height() -
   padding: $vertical-padding $horizontal-padding;
   background: transparent;
   height: control-slim-height();
-  border-radius: var(--p-border-radius-full, border-radius());
+  border-radius: var(--p-border-radius-wide, border-radius());
   will-change: background;
   transition: background duration() easing();
-  @include focus-ring;
 
   .newDesignLanguage & {
     width: control-slim-height();
     justify-content: center;
-    margin-left: -1 * spacing(tight);
+    margin-left: 0;
     padding: 0;
   }
 }
